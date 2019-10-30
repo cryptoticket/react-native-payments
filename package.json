@@ -8,6 +8,7 @@
     "run:demo": "cd examples/native && yarn run:demo",
     "test": "jest"
   },
+  "homepage": "https://github.com/cryptoticket/react-native-payments",
   "repository": "https://github.com/cryptoticket/react-native-payments",
   "keywords": [
     "react",
