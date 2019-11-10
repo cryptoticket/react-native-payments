@@ -2,7 +2,7 @@ require "json"
 
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 version = package["version"]
-giturl = package["repository"]["url"]
+giturl = package["repository"]
 homepage = package["homepage"]
 
 Pod::Spec.new do |s|
