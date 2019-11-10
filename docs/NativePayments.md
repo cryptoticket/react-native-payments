@@ -117,16 +117,21 @@ NativePayments.handleDetailsUpdate({
 
 ---
 
-### canMakePayments()
+### canMakePayments(paymentParams)
 Returns if Apple Pay/Android Pay is available given the device and the supportNetworks provided.
 
 __Arguments__
+- paymentParams - `CanMakePayments`
 
 <details>
 <summary><strong>Example</strong></summary>
 
 ```es6
-NativePayments.canMakePayments();
+NativePayments.canMakePayments({
+  supportedNetworks: ['visa', 'mastercard'],
+  allowedPaymentMethods: [1], // https://developers.google.com/android/reference/com/google/android/gms/wallet/WalletConstants.html
+  environment: 'TEST' // defaults to production
+});
 ```
 
 </details>

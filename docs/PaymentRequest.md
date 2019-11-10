@@ -70,27 +70,6 @@ const paymentRequest = new PaymentRequest(METHOD_DATA, DETAILS, OPTIONS);
 
 ---
 
-### canMakePayments()
-Determines if a payment request can be used to accept a payment based on the supported networks provided in the payment method data.
-
-<details>
-<summary><strong>Example</strong></summary>
-
-```es6
-paymentRequest.canMakePayments()
-  .then(canMakePayments => {
-	if (canMakePayments) {
-	  return paymentRequest.show();
-	}
-
-	// Show fallback payment method
-  });
-```
-
-</details>
-
----
-
 ### show()
 Displays the payment request to the user.
 
