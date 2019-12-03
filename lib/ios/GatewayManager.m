@@ -123,7 +123,8 @@
 - (void)createCloudPaymentsTokenWithPayment:(PKPayment *)payment completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion
 {
 #if __has_include(<SDK-iOS/PKPaymentConverter.h>)
-    cryptogram *NSString = [PKPaymentConverter convertToString:payment];
+    NSString *cryptogram = [NSString string];
+    cryptogram = [PKPaymentConverter convertToString:payment];
     if ([cryptogram length] == 0) {
         NSDictionary *userInfo = @{
           NSLocalizedDescriptionKey: @"Cryptogram creation failed.",
