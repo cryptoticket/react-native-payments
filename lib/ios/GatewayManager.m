@@ -137,7 +137,7 @@
                                          userInfo:userInfo];
         completion(nil, error);
     } else {
-        competion(cryptogram, nil);
+        completion(cryptogram, nil);
     }
 #endif
 }
