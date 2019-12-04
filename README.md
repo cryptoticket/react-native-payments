@@ -46,11 +46,11 @@ $ yarn run:demo
 ```
 
 ## Installation
-First, download the package:
+Download the package:
 ```shell
-$ yarn add react-native-payments
+$ yarn add react-native-payments-alive
 ```
-Second, link the native dependencies:
+React Native < 0.60: link the native dependencies:
 ```shell
 $ react-native link react-native-payments
 ```
@@ -83,14 +83,6 @@ Apple has a documentation on how to do this in their _[Configuring your Environm
 1. Enable Android Pay in your Manifest
 
 Google has documentation on how to do this in their _[Setup Android Pay](https://developers.google.com/pay/api/android/guides/setup)_ guide.
-
-### Importing the Library
-Once Apple Pay/Android Pay is enabled in your app, jump into your app's entrypoint and make the `PaymentRequest` globally available to your app.
-
-```es6
-// index.ios.js
-global.PaymentRequest = require('react-native-payments').PaymentRequest;
-```
 
 ### Initializing the Payment Request
 To initialize a Payment Request, you'll need to provide `PaymentMethodData` and `PaymentDetails`.
@@ -157,6 +149,8 @@ const DETAILS = {
 Once you've defined your `methodData` and `details`, you're ready to initialize your Payment Request.
 
 ```es6
+import {PaymentRequest} from 'react-native-payments-alive';
+
 const paymentRequest = new PaymentRequest(METHOD_DATA, DETAILS);
 ```
 
@@ -466,6 +460,7 @@ Provides a button that is used to trigger payments through Google Pay.
 Here's a list of Payment Processors that you can enable via add-ons:
 - [Stripe](https://github.com/naoufal/react-native-payments/blob/master/packages/react-native-payments-addon-stripe)
 - [Braintree](https://github.com/naoufal/react-native-payments/blob/master/packages/react-native-payments-addon-braintree)
+- [CloudPayments](react-native-payments/docs/CloudPayments.md)
 
 🚨 _Note: On Android, Payment Processors are enabled by default._
 
