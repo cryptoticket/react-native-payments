@@ -8,6 +8,10 @@
 #import <BraintreeApplePay/BraintreeApplePay.h>
 #endif
 
+#if __has_include(<SDK-iOS/PKPaymentConverter.h>)
+#import <SDK-iOS/PKPaymentConverter.h>
+#endif
+
 @implementation GatewayManager
 
 + (NSArray *)getSupportedGateways
@@ -20,6 +24,10 @@
 
 #if __has_include(<BraintreeApplePay/BraintreeApplePay.h>)
     [supportedGateways addObject:@"braintree"];
+#endif
+
+#if __has_include(<SDK-iOS/PKPaymentConverter.h>)
+    [supportedGateways addObject:@"cloudpayments"];
 #endif
 
     return [supportedGateways copy];
@@ -50,6 +58,10 @@
 
 #if __has_include(<BraintreeApplePay/BraintreeApplePay.h>)
     [self createBraintreeTokenWithPayment:payment completion:completion];
+#endif
+
+#if __has_include(<SDK-iOS/PKPaymentConverter.h>)
+    [self createCloudPaymentsTokenWithPayment:payment completion:completion];
 #endif
 }
 
@@ -108,6 +120,29 @@
             completion(tokenizedApplePayPayment.nonce, nil);
         }
     }];
+#endif
+}
+
+// Cloudpayments
+- (void)createCloudPaymentsTokenWithPayment:(PKPayment *)payment completion:(void (^)(NSString * _Nullable, NSError * _Nullable))completion
+{
+#if __has_include(<SDK-iOS/PKPaymentConverter.h>)
+    NSString *cryptogram = [NSString string];
+    cryptogram = [PKPaymentConverter convertToString:payment];
+    if (cryptogram == nil || cryptogram.length == 0) {
+        NSDictionary *userInfo = @{
+          NSLocalizedDescriptionKey: @"Cryptogram creation failed.",
+          NSLocalizedFailureReasonErrorKey: @"Unknown error.",
+          NSLocalizedRecoverySuggestionErrorKey: @"Check card params or Apple Pay settings."
+        };
+        NSErrorDomain const NSCloudpaymentsDomain = @"Cloudpayments";
+        NSError *error = [NSError errorWithDomain:NSCloudpaymentsDomain
+                                             code:-57       // TODO
+                                         userInfo:userInfo];
+        completion(nil, error);
+    } else {
+        completion(cryptogram, nil);
+    }
 #endif
 }
 

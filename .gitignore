@@ -1,3 +1,5 @@
 .gradle
 node_modules
 coverage
+project.xcworkspace
+xcuserdata
