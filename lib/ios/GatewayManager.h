@@ -27,4 +27,9 @@
 - (void)configureBraintreeGateway:(NSDictionary *_Nonnull)gatewayParameters;
 - (void)createBraintreeTokenWithPayment:(PKPayment *_Nonnull)payment
                     completion:(void (^_Nullable)(NSString * _Nullable token, NSError * _Nullable error))completion;
+
+// CloudPayments
+- (void)createCloudPaymentsTokenWithPayment:(PKPayment *_Nonnull)payment
+      completion:(void (^_Nullable)(NSString * _Nullable token, NSError * _Nullable error))completion;
 @end
+
