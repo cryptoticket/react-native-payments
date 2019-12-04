@@ -26,6 +26,10 @@
     [supportedGateways addObject:@"braintree"];
 #endif
 
+#if __has_include(<SDK-iOS/PKPaymentConverter.h>)
+    [supportedGateways addObject:@"cloudpayments"];
+#endif
+
     return [supportedGateways copy];
 }
 
@@ -55,7 +59,7 @@
 #if __has_include(<BraintreeApplePay/BraintreeApplePay.h>)
     [self createBraintreeTokenWithPayment:payment completion:completion];
 #endif
-    
+
 #if __has_include(<SDK-iOS/PKPaymentConverter.h>)
     [self createCloudPaymentsTokenWithPayment:payment completion:completion];
 #endif
@@ -125,7 +129,7 @@
 #if __has_include(<SDK-iOS/PKPaymentConverter.h>)
     NSString *cryptogram = [NSString string];
     cryptogram = [PKPaymentConverter convertToString:payment];
-    if ([cryptogram length] == 0) {
+    if (cryptogram == nil || cryptogram.length == 0) {
         NSDictionary *userInfo = @{
           NSLocalizedDescriptionKey: @"Cryptogram creation failed.",
           NSLocalizedFailureReasonErrorKey: @"Unknown error.",
