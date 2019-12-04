@@ -4,7 +4,8 @@ That's [react-native-payments]() repository fork with merged fixes:
 - [for Google Pay](https://github.com/naoufal/react-native-payments/pulls/riso) (thanks to [riso](https://github.com/riso))
 - [podspec update](https://github.com/johnthepink) (thanks to [johnthepink](https://github.com/johnthepink))
 
-And added Google Pay button.
+Added Google Pay button.
+Added [CloudPayments](https://cloudpayments.eu) payment service support.
 
 API has a BREAKING CHANGE in `canMakePayment` method usage.
 
@@ -449,26 +450,26 @@ The sandbox environment is a great way to test offline implementation of Apple P
 ## Apple Pay Button
 
 Provides a button that is used either to trigger payments through Apple Pay or to prompt the user to set up a card.
-[Detailed docs and examples](react-native-payments/docs/ApplePayButton.md)
+[Detailed docs and examples](docs/ApplePayButton.md)
 
 ## Google Pay Button
 
 Provides a button that is used to trigger payments through Google Pay.
-[Detailed docs and examples](react-native-payments/docs/ApplePayButton.md)
+[Detailed docs and examples](docs/ApplePayButton.md)
 
 ## Add-ons
 Here's a list of Payment Processors that you can enable via add-ons:
 - [Stripe](https://github.com/naoufal/react-native-payments/blob/master/packages/react-native-payments-addon-stripe)
 - [Braintree](https://github.com/naoufal/react-native-payments/blob/master/packages/react-native-payments-addon-braintree)
-- [CloudPayments](react-native-payments/docs/CloudPayments.md)
+- [CloudPayments](react-native-payments-alive/docs/CloudPayments.md)
 
 🚨 _Note: On Android, Payment Processors are enabled by default._
 
 ## API
-### [NativePayments](react-native-payments/docs/NativePayments.md)
-### [PaymentRequest](react-native-payments/docs/PaymentRequest.md)
-### [PaymentRequestUpdateEvent](react-native-payments/docs/PaymentRequestUpdateEvent.md)
-### [PaymentResponse](react-native-payments/docs/PaymentResponse.md)
+### [NativePayments](docs/NativePayments.md)
+### [PaymentRequest](docs/PaymentRequest.md)
+### [PaymentRequestUpdateEvent](docs/PaymentRequestUpdateEvent.md)
+### [PaymentResponse](docs/PaymentResponse.md)
 
 ## Resources
 ### Payment Request
